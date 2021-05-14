@@ -5,9 +5,10 @@ Feature: Article functionality
     When the user "chaouki" logs in with password "bblog2021"
 
     # object : verify that user can navigate/create article
-#     pre-condition
+#     pre-condition:
 #   user has one or more than one article
 #   user be able to select favorite articles
+#   need to use at least two user2 for test
   Scenario: user navigate to article page
     When the user clicks on "Global Feed" tab
     And the user clicks on "qa2021" link
@@ -53,10 +54,11 @@ Feature: Article functionality
     And the user should see his article with "title 1" title
 
 
-# object : verify that user can edit/mark favorite article
-#     pre-condition
+# object : verify that user can edit article
+#     pre-condition:
 #   user has one or more than one article
 #   user be able to select favorite articles
+#   need to use at least three users for test
 
   Scenario: user edit article
     When the user navigate to "title 1" article
@@ -70,17 +72,18 @@ Feature: Article functionality
     When the user clicks on "publish Article" button
     Then the user should be on "title 2" page
 
-  Scenario:  user select favorited articles
-    When the user navigate to "qa2021" profile
-    And the user clicks on "favorited" button for "title 2" article
-    Then the user should see "1" on favorite button
-    When the user clicks on "Favorited Articles" tab
-    Then the user should see "title 2" article
+  Scenario: user can't edit other users article
+    When the user1 clicks on "Global Feed" tab
+    And the user1 select any article for user2
+    Then the user should not see "Edit Article" button
+
 
 # object : verify that user can delete article
-#     pre-condition
+#     pre-condition:
 #   user has more than one article
 #   user has only one article
+#   need to use at least three users for test
+
   Scenario: user has more than one article and delete one article
     When the user navigate to "title 2" article
     Then the user should see "Delete Article" button
@@ -99,6 +102,20 @@ Feature: Article functionality
     When the user clicks on "Favorited Articles" tab
     Then the user should not see "title 2" article
     And the user should see "No articles are here... yet"
+
+  Scenario: user can't delete other users article
+    When the user1 clicks on "Global Feed" tab
+    And the user1 select any article for user2
+    Then the user should not see "Delete Article" button
+
+  Scenario: other user can't see my deleted articles
+    When the user1 navigate to "title 2" article
+    Then the user1 should see "Delete Article" button
+    When the user1 clicks on "Delete Article" button
+    Given the user2 "user2" logs in with password "user2"
+    When the user2 clicks on "Global Feed" tab
+    Then  the user2 should not see "title 2" article for user1
+
 
 
 
