@@ -6,11 +6,6 @@ Feature: Article functionality
 
     # object : verify that user can navigate/create article
 #     pre-condition
-#   test data:
-#    - username: qa2021,
-#    - password: bblog2021
-#    - email:chaoukiqa.come
-#    - env: qa-task.backbasecloud
 #   user has one or more than one article
 #   user be able to select favorite articles
   Scenario: user navigate to article page
@@ -60,11 +55,6 @@ Feature: Article functionality
 
 # object : verify that user can edit/mark favorite article
 #     pre-condition
-#   test data:
-#    - username: qa2021,
-#    - password: bblog2021
-#    - email:chaoukiqa.come
-#    - env: qa-task.backbasecloud
 #   user has one or more than one article
 #   user be able to select favorite articles
 
@@ -89,11 +79,6 @@ Feature: Article functionality
 
 # object : verify that user can delete article
 #     pre-condition
-#   test data:
-#    - username: qa2021,
-#    - password: bblog2021
-#    - email:chaoukiqa.come
-#    - env: qa-task.backbasecloud
 #   user has more than one article
 #   user has only one article
   Scenario: user has more than one article and delete one article
